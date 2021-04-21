@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     
 
     #apps
-    'adminpanel.apps.AdminpanelConfig'
+    'adminpanel.apps.AdminpanelConfig',
+    'customerpanel.apps.CustomerpanelConfig'
 ]
 
 MIDDLEWARE = [
