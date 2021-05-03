@@ -18,16 +18,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('',include('customerpanel.urls')),
-    path('home/',include('customerpanel.urls')),
-    path('404/',include('customerpanel.urls')),
-    path('index/',include('customerpanel.urls')),
-    path('login/',include('customerpanel.urls')),
-    path('shop/',include('customerpanel.urls')),
-    path('blog/',include('customerpanel.urls')),
-    path('product-details/',include('customerpanel.urls')),
-    path('contact-us/',include('customerpanel.urls')),
-    path('checkout/',include('customerpanel.urls')),
-    path('cart/',include('customerpanel.urls')),
 
     path('adminpanel/', include('adminpanel.urls')),
     path('admin/', admin.site.urls)
