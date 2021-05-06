@@ -37,6 +37,7 @@ def login(request):
                 return redirect("login")
             user = User.objects.create_user(username=first,email=email,password=password)
             user.save();
+
             print("user added:", first)
             return redirect("/")
         if 'signin' in request.POST:
