@@ -5,6 +5,9 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User, auth
 
 urlpatterns = [
+        #this page is for testing form application, for small checks and problem finding
+        path('test',views.test,name='test'),
+
         path('',views.index, name='index'),
         path('/',views.index, name='index'),
         path(r'^',views.index, name='index'),
