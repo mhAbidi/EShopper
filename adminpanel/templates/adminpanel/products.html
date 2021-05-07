@@ -1,0 +1,87 @@
+{% extends "adminpanel/index.html" %}
+{% block content %}
+<script>
+    alert({{messages}});
+</script>
+<div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Add Product</h3>
+
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body" style="display: block;">
+                <form method="post" action="products">
+                    {% csrf_token %}
+                    <table>
+                    {% for elem in form %}
+                    <div class="form-group">
+                        <tr>
+                            <td>
+                                {{ elem.label}}
+                            </td>
+
+                            <td>
+                                {{ elem }}
+                            </td>
+                        </tr>
+                    </div>
+                        {% endfor %}
+                    </table>
+
+            <input type="submit" value="Submit">
+            </form>
+
+            </div>
+            <!-- /.card-body -->
+</div>
+
+        <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Products</h3>
+
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+              <table class="table table-hover">
+                <tbody><tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>SKU</th>
+                  <th>Short Description</th>
+                  <th>Long Description</th>
+                  <th>Price</th>
+                  <th>Special Price</th>
+                    <th>Quantity</th>
+                    <th>Meta Title</th>
+                    <th>Meta Description</th>
+                    <th>Meta Keywords</th>
+                </tr>
+                {% for item in query_results %}
+                 <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.name }}</td>
+                     <td>{{ item.sku }}</td>
+                     <td>{{ item.short_description }}</td>
+                     <td>{{ item.long_description }}</td>
+                     <td>{{ item.price }}</td>
+                     <td>{{ item.special_price }}</td>
+                     <td>{{ item.quantity }}</td>
+                     <td>{{ item.meta_title }}</td>
+                     <td>{{ item.meta_description }}</td>
+                     <td>{{ item.meta_keywords }}</td>
+                     <td><a href="products_delete?item={{item.id}}"  >Delete</a></td>
+
+                </tr>
+                {% endfor %}
+              </tbody></table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+
+
+
+{% endblock %}

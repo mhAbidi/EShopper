@@ -40,8 +40,8 @@ INSTALLED_APPS = [
     
 
     #apps
-    'adminpanel.apps.AdminpanelConfig',
-    'customerpanel.apps.CustomerpanelConfig'
+    'adminpanel',
+    'customerpanel'
 ]
 
 MIDDLEWARE = [
@@ -59,7 +59,7 @@ ROOT_URLCONF = 'eshopper.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['adminpanel/templates/adminpanel','customerpanel/templates/customerpanel'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -82,7 +82,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
 
-        'NAME': 'postgres',
+        'NAME': 'ecommerce',
 
         'USER': 'postgres',
 

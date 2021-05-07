@@ -1,6 +1,22 @@
 from django import forms
+from adminpanel.models import *
 
-class product(forms.Form):
+class Product_Form(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = [
+            'name','sku','short_description','long_description','price',
+            'special_price','quantity','meta_title','meta_description','meta_keywords'
+
+        ]
+
+
+
+
+
+
+
+class products(forms.Form):
     name = forms.CharField(label='Name', max_length=100)
     sku = forms.CharField(label='SKU', max_length=45)
     short_description = forms.CharField(label='Short Description', max_length=100)

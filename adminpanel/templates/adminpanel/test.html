@@ -7,11 +7,16 @@
 <body>
 <form method="post" action="test">
     {% csrf_token %}
+    <table>
     {% for elem in form %}
+        <tr>
         <div>
-            {{ elem.label}}            {{ elem }}
+            <td>{{ elem.label}}</td>
+            <td>{{ elem }}</td>
         </div>
+            </tr>
     {% endfor %}
+    </table>
     <input type="submit" value="Submit">
 </form>
 </body>
