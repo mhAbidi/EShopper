@@ -2,18 +2,6 @@
 - Started working on EShopper
 - Studied DB connections 
 
-## Date: 21-04-2021
-- Watched  Django  Video  Tutorial
-
-
-## Date: 22-04-2021
-- Worked on Travello Project
-
-
-## Date: 23-04-2021
-- Travello Project requirements done;
-- Search and city add.
-
 ## Date: 28-04-2021
 - Imported Template pages
 - Setted up models in MySQL
