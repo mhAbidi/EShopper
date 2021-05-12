@@ -12,19 +12,36 @@ def logout(request):
     auth.logout(request)
     return render(request, "adminpanel/login.html")
 
+def users(request):
+    query_results = Users.objects.all()
+    if request.method == 'POST':
+        form = User_Form(request.POST)
+        if form.is_valid():
+            user = Users()
+            user.firstname = request.POST["firstname"]
+            user.lastname = request.POST["lastname"]
+            user.email = request.POST["email"]
+            user.password = request.POST["password"]
+            if request.POST["is_staff"] == "on":
+                user.is_staff = True
+            if request.POST["status"] == "on":
+                user.status = True
+            user.save();
+            messages.success(request, "Successfully added")
+            form = User_Form()
+            return render(request, "adminpanel/users.html",
+                          {'form': form, 'messages': messages, 'query_results': query_results})
+    else:
+        form = User_Form()
+    return render(request, 'adminpanel/users.html', {'form': form, 'query_results': query_results})
+
+
 def products(request):
     query_results = Product.objects.all()
 
     if request.method == 'POST':
-        # create a form instance and populate it with data from the request:
         form = Product_Form(request.POST)
-        # check whether it's valid:
         if form.is_valid():
-            # process the data in form.cleaned_data as required
-            # ...
-            # redirect to a new URL:
-            # name = request.POST["your_name"]
-            # print(name)
             prod = Product()
             prod.name = request.POST["name"]
             prod.sku = request.POST["sku"]
@@ -40,13 +57,8 @@ def products(request):
             messages.success(request,"Successfully added")
             form = Product_Form()
             return render(request, "adminpanel/products.html", {'form':form, 'messages':messages, 'query_results':query_results})
-
-
-    # if a GET (or any other method) we'll create a blank form
     else:
         form = Product_Form()
-    print("find this")
-    print(query_results[0])
     return render(request, 'adminpanel/products.html', {'form': form ,'query_results':query_results})
 
 def products_delete(request):
@@ -103,11 +115,14 @@ def login(request):
         password = request.POST["password"]
         print(first, password)
         user = auth.authenticate(username=first, password=password, is_staff="true" )
+
         if user is not None:
             auth.login(request, user)
             print("Logged in")
             return redirect("index")
         else:
-            messages.info(request, 'Invalid credentials')
+
+            messages.add_message(request, messages.INFO, "Invalid Credentials")
         return redirect("login")
-    return render(request,'adminpanel/login.html')
+
+    return render(request,'login')

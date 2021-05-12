@@ -3,7 +3,13 @@ from django.db import models
 # Create your models here.
 
 
-
+class Users(models.Model):
+    firstname = models.CharField(max_length=45)
+    lastname = models.CharField(max_length=45)
+    email = models.CharField(max_length=45, unique=True)
+    password = models.CharField(max_length=45)
+    status = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
 
 class Product(models.Model):
     name = models.CharField(max_length=100)
