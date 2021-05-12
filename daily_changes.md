@@ -44,7 +44,10 @@
 - User registration from adminpanel and customer side working properly
 
 ## Date: 12-05-2021
-- 
+- User CRUD Functionality completed
+- Cosmetic Changes done
+- Some navigations bugs identified
+
 
 
 
