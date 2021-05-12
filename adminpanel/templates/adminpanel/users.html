@@ -53,9 +53,23 @@
                     <td>{{ item.email }}</td>
                      <td>{{ item.firstname }}</td>
                      <td>{{ item.lastname }}</td>
-                     <td>{{ item.staff }}</td>
+                     <td>{{ item.is_staff }}</td>
                      <td>{{ item.status }}</td>
-                     <td><a href="users_delete?item={{item.id}}"  >Delete</a></td>
+                     <td>
+                         <a href="{% url 'users_edit' id=item.id %}">
+                             <input type="button" value="Edit">
+                         </a>
+                     </td>
+
+                     <td>
+                         <form method="post" action="users">
+                             {% csrf_token %}
+                             <input type ="hidden" name="id" value="{{item.id}}">
+                             <input type ="hidden" name="delete" value="yes">
+                             <input type="submit" value="Delete">
+                         </form>
+                     </td>
+
 
                 </tr>
                 {% endfor %}
